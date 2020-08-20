@@ -4,7 +4,7 @@
  * @args: Arguments typed into the line command.
  * Return: No return.
  */
-int execute(char **args)
+int execute(char **args, int counter)
 {
 	pid_t pid = fork();
 	int status, errorstatus = 0;
@@ -21,13 +21,13 @@ int execute(char **args)
 		command = matchcommand(args[0]);
 		if (command == NULL)
 		{
-			perror("./hsh");
+			errorsys(args[0], counter, "not found");
 			_free(NULL, NULL);
 			exit(127);
 		}
 		if (execve(command, args, environ) == -1)
 		{
-			perror("asdfadsf");
+			errorsys(command, counter, "cannot execute");
 			_free(NULL, NULL);
 			exit(126);
 		}
