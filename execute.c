@@ -2,6 +2,7 @@
 /**
  * execute - function that execute all arguments in command line.
  * @args: Arguments typed into the line command.
+ * @counter: counter of commands
  * Return: No return.
  */
 int execute(char **args, int counter)
