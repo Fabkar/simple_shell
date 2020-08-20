@@ -25,6 +25,8 @@ int loop(void)
 		args = splitline(line);
 		checkexit(args[0], args[1], args);
 		outstatus = execute(args);
+		free(args[0]);
+		free(args);
 	}
 	return (outstatus);
 }

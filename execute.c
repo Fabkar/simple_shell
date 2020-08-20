@@ -37,7 +37,12 @@ int execute(char **args)
 			exit(126);
 		}
 		else
+		{
+			free(command);
+			free(args[0]);
+			free(args);
 			exit(EXIT_SUCCESS);
+		}
 	}
 	else
 	{
