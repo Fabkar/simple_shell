@@ -13,17 +13,9 @@ char *readline(void)
 	n = getline(&line, &size, stdin);
 	if (n == EOF)
 	{
-		if (feof(stdin))
-		{
-			_putchar(10);
-			free(line);
-			exit(EXIT_SUCCESS);
-		}
-		else
-		{
-			free(line);
-			exit(EXIT_FAILURE);
-		}
+		_putchar(10);
+		free(line);
+		exit(EXIT_SUCCESS);
 	}
 	if (n == 1)
 	{
