@@ -35,7 +35,7 @@ void prompt(void)
  */
 void _printenv(void)
 {
-	int i = o;
+	int i = 0;
 	char **env = environ;
 
 	while (env[i])
