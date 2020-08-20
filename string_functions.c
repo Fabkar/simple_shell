@@ -36,11 +36,11 @@ char *_strtok(char *arg, char *dlm)
 	int c = 0, found = 0, i = 0;
 	char *str = NULL;
 
-	if (arg)
-		str = _strdup(arg);
 	if (!dlm || (arg == NULL && token == NULL))
 		return (0);
-	if (str == NULL)
+	if (arg != NULL)
+		str = _strdup(arg);
+	if (arg == NULL)
 		str = token;
 	while (str[i] == dlm[0])
 		i++;

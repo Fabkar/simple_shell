@@ -22,6 +22,7 @@ char **splitline(char *buffer)
 		word = _strtok(NULL, " ");
 	}
 	words[pos] = NULL;
+	free(word)
 	free(bufferline);
 	return (words);
 }

@@ -10,7 +10,7 @@ char *readline(void)
 	size_t size = 0;
 	int i = 0, n = 0;
 
-	n = getline(&line, &size, stdin);
+	n = _getline(&line, &size, stdin);
 	if (n == EOF)
 	{
 		_putchar(10);
