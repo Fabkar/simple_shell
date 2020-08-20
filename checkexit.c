@@ -1,11 +1,11 @@
 #include "shell.h"
 /**
- * checkexit - function to check a string
+ * checkexit - function to check the exit with status.
  * @arg: Pointer to string.
  * @n: pointer to the number in case exist.
  * @args: args to be free
  * @status: status to exit
- * Return: 1 if the match is success else 0.
+ * Return: 0 if the match is not success else exit with status.
  */
 int checkexit(char *arg, char *n, char **args, int status)
 {
@@ -33,32 +33,69 @@ int checkspaces(char *line)
 {
 	int i = 0;
 	(void)line;
-
 	while (line[i] != '\0')
 	{
 		if (line[i] != ' ')
 			return (1);
 		i++;
 	}
+	free(line);
 	return (0);
 }
 /**
- * checkexit - function to check a string
+ * simplexit - function to check a string
  * @arg: Pointer to string.
  * @status: status to exit
- * Return: 1 if the match is success else 0.
+ * Return: 0 if the match is NOT success else exit.
  */
 int simplexit(char *arg, int status)
 {
+	int len;
+
 	if (!arg)
 		return (0);
-	if (arg)
+	len = _strlen(arg);
+	if (len == 4)
 	{
-		if (!_strncmp("exit", arg, 4))
+		if (arg)
 		{
-			free(arg);
-			exit(status);
+			if (!_strncmp("exit", arg, 4))
+			{
+				free(arg);
+				exit(status);
+			}
 		}
 	}
 	return (0);
+}
+/**
+ * checkenv - function check env built
+ * @arg: Pointer to string.
+ * Return: 1 if the match is success else 0.
+ */
+int checkenv(char *arg)
+{
+	if ((_strncmp("env", arg, 3)) == 0)
+	{
+		_printenv();
+		return (1);
+	}
+	return (0);
+}
+/**
+ * errorsys - puts in command line the error
+ * @argv: pointer to pointer
+ * @count: the history
+ * @error: exit error.
+ * Return: Nothing.
+ */
+void errorsys(char *argv, int count, char *error)
+{
+	_puts("#cisfun$: ");
+	print_number(count);
+	_puts(": ");
+	_puts(argv);
+	_puts(": ");
+	_puts(error);
+	_putchar(10);
 }

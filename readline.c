@@ -1,9 +1,10 @@
 #include "shell.h"
 /**
  * readline - Function that read our line command.
+ * @status: In case EOF exit with status
  * Return: The string of characters.
  */
-char *readline(void)
+char *readline(int status)
 {
 	char *line = NULL;
 	char *buffer = NULL;
@@ -14,7 +15,7 @@ char *readline(void)
 	if (n == EOF)
 	{
 		free(line);
-		exit(EXIT_SUCCESS);
+		exit(status);
 	}
 	if (n == 1)
 	{

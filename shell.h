@@ -9,32 +9,37 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include <sys/stat.h>
-
-#define BUFFERSIZE 64
-
+#define BUFFERSIZE 1024
 extern char **environ;
 
-char *_strtok(char *arg, char *dlm);
 int loop(void);
+char *readline(int status);
 char **splitline(char *buffer);
-int execute(char **args);
-int _strcmp(char *s1, char *s2);
-char *_strdup(char *str);
-char *readline(void);
-void _printenv(void);
-int checkexit(char *arg, char *n, char **args, int status);
-int simplexit(char *arg, int status);
-int checkspaces(char *line);
-int _strlen(char *s);
-void ctrlc(int sign);
-int _putchar(char c);
-void _puts(char *str);
-void prompt(void);
-int _strncmp(char *s1, char *s2, int len);
-char *matchcommand(char *command);
+int execute(char **args, int counter);
+
 char *_getenv(char *path);
 char **splitpath(char *path);
+char *matchcommand(char *command);
+
+char *_strtok(char *arg, char *dlm);
+int _strncmp(char *s1, char *s2, int len);
+int _strcmp(char *s1, char *s2);
+char *_strdup(char *str);
+int _strlen(char *s);
 char *_strcat(char *dest, char *src);
+
+void prompt(void);
+int _putchar(char c);
+void _puts(char *str);
+void _printenv(void);
+void errorsys(char *argv, int count, char *error);
+
+int checkexit(char *arg, char *n, char **args, int status);
+int simplexit(char *arg, int status);
+
+int checkenv(char *arg);
+int checkspaces(char *line);
+void ctrlc(int sign);
 int _atoi(char *s);
 ssize_t _getline(char **buffline, size_t *size, FILE *std);
 void _free(char *arg, char **args);
