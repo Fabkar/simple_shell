@@ -7,7 +7,7 @@
 void ctrlc(int sign)
 {
 	signal(sign, SIG_IGN);
-	_putchar(10);
-	prompt();
+	write(STDERR_FILENO, "\n", 1);
+	write(STDERR_FILENO, "#cisfun$ ", 10);
 	signal(SIGINT, ctrlc);
 }

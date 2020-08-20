@@ -10,7 +10,7 @@
 #include <signal.h>
 #include <sys/stat.h>
 
-#define BUFFERSIZE 128
+#define BUFFERSIZE 64
 
 extern char **environ;
 
@@ -22,7 +22,9 @@ int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
 char *readline(void);
 void _printenv(void);
-int checkexit(char *arg, char *n, char **args);
+int checkexit(char *arg, char *n, char **args, int status);
+int simplexit(char *arg, int status);
+int checkspaces(char *line);
 int _strlen(char *s);
 void ctrlc(int sign);
 int _putchar(char c);

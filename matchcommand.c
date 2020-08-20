@@ -16,17 +16,20 @@ char *matchcommand(char *command)
 		return (command);
 	folder = _getenv("PATH");
 	folders = splitpath(folder);
-	while (folders[i])
+	if (folders)
 	{
-		finalcommand = _strcat(folders[i], command);
-			if (stat(finalcommand, &fileStat) == 0)
-			{
-				return (finalcommand);
-			}
-			free(finalcommand);
-			i++;
+		while (folders[i])
+		{
+			finalcommand = _strcat(folders[i], command);
+				if (stat(finalcommand, &fileStat) == 0)
+				{
+					return (finalcommand);
+				}
+				free(finalcommand);
+				i++;
+		}
+		free(folders[0]);
+		free(folders);
 	}
-	free(folders[0]);
-	free(folders);
 	return (NULL);
 }

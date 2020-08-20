@@ -13,7 +13,7 @@ int execute(char **args)
 	if (pid < 0)
 	{
 		perror("Error: ");
-		_free(args[0], args);
+		_free(NULL, NULL);
 		exit(1);
 	}
 	else if (pid == 0)
@@ -21,21 +21,20 @@ int execute(char **args)
 		command = matchcommand(args[0]);
 		if (command == NULL)
 		{
-			status = 127;
-			perror("command not found");
-			_free(args[0], args);
+			perror("./hsh");
+			_free(NULL, NULL);
 			exit(127);
 		}
 		if (execve(command, args, environ) == -1)
 		{
-			perror("");
-			_free(args[0], args);
+			perror("asdfadsf");
+			_free(NULL, NULL);
 			exit(126);
 		}
 		else
 		{
 			free(command);
-			_free(args[0], args);
+			_free(NULL, NULL);
 			exit(EXIT_SUCCESS);
 		}
 	}

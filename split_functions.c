@@ -13,7 +13,6 @@ char **splitline(char *buffer)
 	if (words == NULL)
 		exit(EXIT_FAILURE);
 	bufferline = _strdup(buffer);
-	free(buffer);
 	word = _strtok(bufferline, " ");
 	while (word)
 	{
@@ -37,6 +36,8 @@ char **splitpath(char *path)
 	char **folders = malloc(sizeof(char *) * BUFFERSIZE);
 	char *folder = NULL, *buffer = NULL;
 
+	if (!path)
+		return (NULL);
 	if (folders == NULL)
 		exit(EXIT_FAILURE);
 	buffer = _strdup(path);
