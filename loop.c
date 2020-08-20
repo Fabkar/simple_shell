@@ -3,11 +3,11 @@
  * loop - loop
  * Return: 0 to EXIT_SUCCESS.
  */
-void loop(void)
+int loop(void)
 {
 	char *line = NULL;
 	char **args = NULL;
-	int status = 1;
+	int status = 1, outstatus = 0;
 
 	while (status)
 	{
@@ -18,8 +18,9 @@ void loop(void)
 			continue;
 		args = splitline(line);
 		checkexit(args[0], args[1], args);
-		execute(args);
+		outstatus = execute(args);
 		free(args[0]);
 		free(args);
 	}
+        return (outstatus);
 }

@@ -15,9 +15,9 @@
 extern char **environ;
 
 char *_strtok(char *arg, char *dlm);
-void loop(void);
+int loop(void);
 char **splitline(char *buffer);
-void execute(char **args);
+int execute(char **args);
 int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
 char *readline(void);

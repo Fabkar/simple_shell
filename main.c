@@ -5,7 +5,9 @@
  */
 int main(void)
 {
+        int outstatus = 0;
+
 	signal(SIGINT, ctrlc);
-	loop();
-	exit(EXIT_SUCCESS);
+	outstatus = loop();
+	return (outstatus);
 }

@@ -4,10 +4,10 @@
  * @args: Arguments typed into the line command.
  * Return: No return.
  */
-void execute(char **args)
+int execute(char **args)
 {
 	pid_t pid;
-	int status;
+	int status, errorstatus = 0;
 	char *command = NULL;
 
 	pid = fork();
@@ -43,6 +43,7 @@ void execute(char **args)
 	{
 		wait(&status);
 		if (WIFEXITED(status))
-			status = WEXITSTATUS(status);
+                        errorstatus = WEXITSTATUS(status);
 	}
+        return (errorstatus);
 }
