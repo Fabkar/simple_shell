@@ -92,3 +92,76 @@ Function to check a string "exit".
 
 * [ctrlc](https://github.com/gedafu/simple_shell/blob/master/ctrlc.c)
 Function to exit when user type "Ctrl + c".
+
+#### REQUIREMENTS
+
+* Allowed editors: *vi*, *vim*, *emacs*
+* All your files will be compiled on Ubuntu 14.04 LTS.
+* Your programs and functions will be compiled with *gcc 4.8.4* using the flags *-Wall -Werror -Wextra* and *-pedantic*
+* All your files should end with a new line
+* A *README.md* file, at the root of the folder of the project is mandatory
+* Your code should use the *Betty* style. It will be checked using *betty-style.pl* and *betty-doc.pl*
+* No more than 5 functions per file.
+* Your shell should not have any memory leaks.
+* All your header files should be include guarded.
+* Use system calls only when you need to (why?).
+
+
+### EXAMPLES
+#### Modes
+
+##### Non-interactive
+*Command*
+```
+echo "/bin/ls" | ./hsh
+```
+*Output*
+```
+atoi.c   checkexit.c  execute.c        hsh     man_1_simple_shell  print_functions.c  README.md  split_functions.c   superminishell.c
+AUTHORS  ctrlc.c      get_functions.c  loop.c  matchcommand.c      readline.c         shell.h    string_functions.c
+```
+<hr>
+
+##### Interactive
+*Command*
+```
+./hsh
+```
+Then the prompt appear, so you can type in the command line, and press return
+**Ex** - `/bin/ls`
+
+*Output*
+```
+atoi.c   checkexit.c  execute.c        hsh     man_1_simple_shell  print_functions.c  README.md  split_functions.c   superminishell.c
+AUTHORS  ctrlc.c      get_functions.c  loop.c  matchcommand.c      readline.c         shell.h    string_functions.c
+```
+
+
+
+<p align="center"> AUTHORS :mechanical_arm:</p>
+<p align="center">
+    <h2 align="center">Made by, David Arias Fuentes</h2>
+      <p align="center">
+        <a href="https://twitter.com/DavidAriasFu" target="_blank">
+            <img alt="twitter_page" src="https://github.com/gedafu/readme-template/blob/master/images/twitter.png" style="float: center; margin-right: 10px" height="50" width="50">
+        </a>
+        <a href="https://www.linkedin.com/in/david-arias-fuentes-5b50951b0/" target="_blank">
+            <img alt="linkedin_page" src="https://github.com/gedafu/readme-template/blob/master/images/linkedin.png" style="float: center; margin-right: 10px" height="50"  width="50">
+        </a>
+        <a href="https://medium.com/@gedafu2005" target="_blank">
+            <img alt="medium_page" src="https://github.com/gedafu/readme-template/blob/master/images/medium.png" style="float: center; margin-right: 10px" height="50" width="50">
+        </a>
+      </p>
+</p>
+
+<p align="center">
+    <h2 align="center">Made by, Fabian Carmona Vargas</h2>
+      <p align="center">
+        <a href="https://twitter.com/fabkar08" target="_blank">
+            <img alt="twitter_page" src="https://github.com/gedafu/readme-template/blob/master/images/twitter.png" style="float: center; margin-right: 10px" height="50" width="50">
+        </a>
+        <a href="https://www.linkedin.com/in/fabian-andres-carmona-vargas-396917b9/" target="_blank">
+            <img alt="linkedin_page" src="https://github.com/gedafu/readme-template/blob/master/images/linkedin.png" style="float: center; margin-right: 10px" height="50"  width="50">
+        </a>
+      </p>
+</p>
