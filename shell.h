@@ -21,6 +21,7 @@ int execute(char **args);
 int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
 char *readline(void);
+void _printenv(void);
 int checkexit(char *arg, char *n, char **args);
 int _strlen(char *s);
 void ctrlc(int sign);
@@ -33,4 +34,5 @@ char *_getenv(char *path);
 char **splitpath(char *path);
 char *_strcat(char *dest, char *src);
 int _atoi(char *s);
+ssize_t _getline(char **buffline, size_t *size, FILE *std);
 #endif

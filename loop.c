@@ -16,11 +16,15 @@ int loop(void)
 		line = readline();
 		if (line == NULL)
 			continue;
+		if ((_strncmp("env", line, 3)) == 0)
+		{
+			free(line);
+			_printenv();
+			continue;
+		}
 		args = splitline(line);
 		checkexit(args[0], args[1], args);
 		outstatus = execute(args);
-		free(args[0]);
-		free(args);
 	}
 	return (outstatus);
 }

@@ -29,3 +29,20 @@ void prompt(void)
 {
 	_puts("#cisfun$ ");
 }
+/**
+ * _printenv - function that prints the system enviroment.
+ * Return: nothing.
+ */
+void _printenv(void)
+{
+	int i = o;
+	char **env = environ;
+
+	while (env[i])
+	{
+		_puts(env[i]);
+		_putchar(10);
+		i++;
+	}
+
+}
