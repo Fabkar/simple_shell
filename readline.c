@@ -13,7 +13,6 @@ char *readline(void)
 	n = _getline(&line, &size, stdin);
 	if (n == EOF)
 	{
-		_putchar(10);
 		free(line);
 		exit(EXIT_SUCCESS);
 	}
