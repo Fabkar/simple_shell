@@ -32,6 +32,7 @@ void prompt(void);
 int _putchar(char c);
 void _puts(char *str);
 void _printenv(void);
+void print_number(int n);
 void errorsys(char *argv, int count, char *error);
 
 int checkexit(char *arg, char *n, char **args, int status);
