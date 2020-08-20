@@ -43,7 +43,7 @@ int execute(char **args)
 	{
 		wait(&status);
 		if (WIFEXITED(status))
-                        errorstatus = WEXITSTATUS(status);
+			errorstatus = WEXITSTATUS(status);
 	}
-        return (errorstatus);
+	return (errorstatus);
 }

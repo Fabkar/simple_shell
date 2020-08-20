@@ -22,5 +22,5 @@ int loop(void)
 		free(args[0]);
 		free(args);
 	}
-        return (outstatus);
+	return (outstatus);
 }

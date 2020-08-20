@@ -5,7 +5,7 @@
  */
 int main(void)
 {
-        int outstatus = 0;
+	int outstatus = 0;
 
 	signal(SIGINT, ctrlc);
 	outstatus = loop();
