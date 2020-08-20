@@ -16,7 +16,8 @@ int loop(void)
 		line = readline(outstatus);
 		if (line == NULL)
 			continue;
-		if (!checkspaces(line))
+		line = checkspaces(line);
+		if (line == NULL)
 			continue;
 		simplexit(line, outstatus); /* libres de leaks hasta aca */
 		args = splitline(line);

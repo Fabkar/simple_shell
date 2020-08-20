@@ -27,20 +27,20 @@ int checkexit(char *arg, char *n, char **args, int status)
 /**
  * checkspaces - function to check a string of spaces
  * @line: Pointer to string.
- * Return: 0 if there are only spaces
+ * Return: null or a string without spaces.
  */
-int checkspaces(char *line)
+char *checkspaces(char *line)
 {
 	int i = 0;
 	(void)line;
 	while (line[i] != '\0')
 	{
 		if (line[i] != ' ')
-			return (1);
+			return (line + i);
 		i++;
 	}
 	free(line);
-	return (0);
+	return (NULL);
 }
 /**
  * simplexit - function to check a string
@@ -56,16 +56,9 @@ int simplexit(char *arg, int status)
 		return (0);
 	len = _strlen(arg);
 	if (len == 4)
-	{
 		if (arg)
-		{
 			if (!_strncmp("exit", arg, 4))
-			{
-				free(arg);
 				exit(status);
-			}
-		}
-	}
 	return (0);
 }
 /**
@@ -75,11 +68,15 @@ int simplexit(char *arg, int status)
  */
 int checkenv(char *arg)
 {
-	if ((_strncmp("env", arg, 3)) == 0)
-	{
-		_printenv();
-		return (1);
-	}
+	int len;
+
+	len = _strlen(arg);
+	if (len == 3)
+		if ((_strncmp("env", arg, 3)) == 0)
+		{
+			_printenv();
+			return (1);
+		}
 	return (0);
 }
 /**

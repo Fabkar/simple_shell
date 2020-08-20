@@ -39,7 +39,7 @@ int checkexit(char *arg, char *n, char **args, int status);
 int simplexit(char *arg, int status);
 
 int checkenv(char *arg);
-int checkspaces(char *line);
+char *checkspaces(char *line);
 void ctrlc(int sign);
 int _atoi(char *s);
 ssize_t _getline(char **buffline, size_t *size, FILE *std);
