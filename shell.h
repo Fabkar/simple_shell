@@ -35,4 +35,5 @@ char **splitpath(char *path);
 char *_strcat(char *dest, char *src);
 int _atoi(char *s);
 ssize_t _getline(char **buffline, size_t *size, FILE *std);
+void _free(char *arg, char **args);
 #endif

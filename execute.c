@@ -6,16 +6,14 @@
  */
 int execute(char **args)
 {
-	pid_t pid;
+	pid_t pid = fork();
 	int status, errorstatus = 0;
 	char *command = NULL;
 
-	pid = fork();
 	if (pid < 0)
 	{
 		perror("Error: ");
-		free(args[0]);
-		free(args);
+		_free(args[0], args);
 		exit(1);
 	}
 	else if (pid == 0)
@@ -25,22 +23,19 @@ int execute(char **args)
 		{
 			status = 127;
 			perror("command not found");
-			free(args[0]);
-			free(args);
+			_free(args[0], args);
 			exit(127);
 		}
 		if (execve(command, args, environ) == -1)
 		{
 			perror("");
-			free(args[0]);
-			free(args);
+			_free(args[0], args);
 			exit(126);
 		}
 		else
 		{
 			free(command);
-			free(args[0]);
-			free(args);
+			_free(args[0], args);
 			exit(EXIT_SUCCESS);
 		}
 	}
