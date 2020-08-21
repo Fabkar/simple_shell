@@ -52,15 +52,18 @@ void _printenv(void)
 void print_number(int n)
 {
 	unsigned int i;
+	unsigned int p;
+	unsigned int *ptr = &p;
 
 	if (n < 0)
 	{
-		_putchar('-');
+		write(STDERR_FILENO, "-", 1);
 		i = n * -1;
 	}
 	else
 		i = n;
 	if (n / 10 != 0)
 		print_number(i / 10);
-	_putchar(i % 10 + '0');
+	p = i % 10 + 48;
+	write(STDERR_FILENO, ptr, 1);
 }
