@@ -23,16 +23,16 @@ int execute(char **args, int counter, char *name)
 		if (command == NULL)
 		{
 			errorsys(args[0], counter, "not found", name);
-			exit(127);
+			exit(errno);
 		}
 		if (execve(command, args, environ) == -1)
 		{
 			errorsys(command, counter, "cannot execute", name);
-			exit(126);
+			exit(errno);
 		}
 		else
 		{
-			exit(EXIT_SUCCESS);
+			exit(errno);
 		}
 	}
 	else

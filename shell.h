@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include <sys/stat.h>
+#include <errno.h>
 #define BUFFERSIZE 1024
 extern char **environ;
 int loop(char *name);
