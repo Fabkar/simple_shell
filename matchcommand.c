@@ -12,8 +12,9 @@ char *matchcommand(char *command)
 	char *finalcommand = NULL;
 	int i = 0;
 
-	if (stat(command, &fileStat) == 0)
-		return (command);
+	if (*command == '.' || *command == '/')
+		if (stat(command, &fileStat) == 0)
+			return (command);
 	folder = _getenv("PATH");
 	folders = splitpath(folder);
 	if (folders)
@@ -25,11 +26,11 @@ char *matchcommand(char *command)
 				{
 					return (finalcommand);
 				}
-				free(finalcommand);
+				/* free(finalcommand); */
 				i++;
 		}
-		free(folders[0]);
-		free(folders);
+		/* free(folders[0]);*/
+		/*free(folders); */
 	}
 	return (NULL);
 }

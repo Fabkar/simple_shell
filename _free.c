@@ -1,12 +1,14 @@
 #include "shell.h"
 /**
- * _free - function to free args
- * @arg: single pointer
+ * _free - function to free args.
  * @args: double pointer
  * Return: void return
  */
-void _free(char *arg, char **args)
+void _free(char **args)
 {
-	free(arg);
+	int a;
+
+	for (a = 0; args[a] != NULL; a++)
+		free(args[a]);
 	free(args);
 }

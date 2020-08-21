@@ -2,10 +2,11 @@
 /**
  * execute - function that execute all arguments in command line.
  * @args: Arguments typed into the line command.
- * @counter: counter of commands
+ * @counter: counter of commands.
+ * @name: Name of the program.
  * Return: No return.
  */
-int execute(char **args, int counter)
+int execute(char **args, int counter, char *name)
 {
 	pid_t pid = fork();
 	int status, errorstatus = 0;
@@ -14,7 +15,6 @@ int execute(char **args, int counter)
 	if (pid < 0)
 	{
 		perror("Error: ");
-		_free(NULL, NULL);
 		exit(1);
 	}
 	else if (pid == 0)
@@ -22,20 +22,16 @@ int execute(char **args, int counter)
 		command = matchcommand(args[0]);
 		if (command == NULL)
 		{
-			errorsys(args[0], counter, "not found");
-			_free(NULL, NULL);
+			errorsys(args[0], counter, "not found", name);
 			exit(127);
 		}
 		if (execve(command, args, environ) == -1)
 		{
-			errorsys(command, counter, "cannot execute");
-			_free(NULL, NULL);
+			errorsys(command, counter, "cannot execute", name);
 			exit(126);
 		}
 		else
 		{
-			free(command);
-			_free(NULL, NULL);
 			exit(EXIT_SUCCESS);
 		}
 	}

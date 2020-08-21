@@ -58,7 +58,10 @@ int simplexit(char *arg, int status)
 	if (len == 4)
 		if (arg)
 			if (!_strncmp("exit", arg, 4))
+			{
+				free(arg);
 				exit(status);
+			}
 	return (0);
 }
 /**
@@ -84,11 +87,13 @@ int checkenv(char *arg)
  * @argv: pointer to pointer
  * @count: the history
  * @error: exit error.
+ * @name: name of the program.
  * Return: Nothing.
  */
-void errorsys(char *argv, int count, char *error)
+void errorsys(char *argv, int count, char *error, char *name)
 {
-	_puts("#cisfun$: ");
+	_puts(name);
+	_puts(": ");
 	print_number(count);
 	_puts(": ");
 	_puts(argv);

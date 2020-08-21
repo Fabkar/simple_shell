@@ -1,9 +1,10 @@
 #include "shell.h"
 /**
- * loop - loop
+ * loop - loop.
+ * @name: name of the program.
  * Return: 0 to EXIT_SUCCESS.
  */
-int loop(void)
+int loop(char *name)
 {
 	char *line = NULL;
 	char **args = NULL;
@@ -24,7 +25,7 @@ int loop(void)
 		if (checkenv(args[0]))
 			continue;
 		checkexit(args[0], args[1], args, outstatus);
-		outstatus = execute(args, counter);
+		outstatus = execute(args, counter, name);
 		counter++;
 	}
 	return (outstatus);
