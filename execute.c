@@ -8,23 +8,25 @@
  */
 int execute(char **args, int counter, char *name)
 {
-	pid_t pid = fork();
+	pid_t pid;
 	int status, errorstatus = 0;
 	char *command = NULL;
 
+	command = matchcommand(args[0]);
+	if (command == NULL)
+	{
+		errorsys(args[0], counter, "not found", name);
+		free(command);
+		return (1);
+	}
+	pid = fork();
 	if (pid < 0)
 	{
 		perror("Error: ");
-		exit(1);
+		exit(errno);
 	}
 	else if (pid == 0)
 	{
-		command = matchcommand(args[0]);
-		if (command == NULL)
-		{
-			errorsys(args[0], counter, "not found", name);
-			exit(errno);
-		}
 		if (execve(command, args, environ) == -1)
 		{
 			errorsys(command, counter, "cannot execute", name);
