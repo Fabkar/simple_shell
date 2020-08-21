@@ -24,13 +24,15 @@ char *matchcommand(char *command)
 			finalcommand = _strcat(folders[i], command);
 				if (stat(finalcommand, &fileStat) == 0)
 				{
+					free(folders[0]);
+					free(folders);
 					return (finalcommand);
 				}
-				/* free(finalcommand); */
+				free(finalcommand);
 				i++;
 		}
-		/* free(folders[0]);*/
-		/*free(folders); */
 	}
+	free(folders[0]);
+	free(folders);
 	return (NULL);
 }

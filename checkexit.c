@@ -78,6 +78,7 @@ int checkenv(char *arg)
 		if ((_strncmp("env", arg, 3)) == 0)
 		{
 			_printenv();
+			free(arg);
 			return (1);
 		}
 	return (0);
@@ -92,12 +93,12 @@ int checkenv(char *arg)
  */
 void errorsys(char *argv, int count, char *error, char *name)
 {
-	_puts(name);
-	_puts(": ");
+	write(STDERR_FILENO, name, _strlen(name));
+	write(STDERR_FILENO, ": ", 3);
 	print_number(count);
-	_puts(": ");
-	_puts(argv);
-	_puts(": ");
-	_puts(error);
-	_putchar(10);
+	write(STDERR_FILENO, ": ", 3);
+	write(STDERR_FILENO, argv, _strlen(argv));
+	write(STDERR_FILENO, ": ", 3);
+	write(STDERR_FILENO, error, _strlen(error));
+	write(STDERR_FILENO, "\n", 1);
 }

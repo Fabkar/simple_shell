@@ -13,6 +13,7 @@ char **splitline(char *buffer)
 	if (words == NULL)
 		exit(EXIT_FAILURE);
 	bufferline = _strdup(buffer);
+	free(buffer);
 	word = _strtok(bufferline, " ");
 	while (word)
 	{
@@ -42,7 +43,6 @@ char **splitpath(char *path)
 		exit(EXIT_FAILURE);
 	buffer = _strdup(path);
 	folder = _strtok(buffer, ":");
-	folders[pos] = folder;
 	while (folder)
 	{
 		folders[pos] = folder;
@@ -50,6 +50,7 @@ char **splitpath(char *path)
 		folder = _strtok(NULL, ":");
 	}
 	folders[pos] = NULL;
+	free(folder);
 	free(buffer);
 	return (folders);
 }

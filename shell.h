@@ -9,7 +9,7 @@
 #include <signal.h>
 #include <sys/stat.h>
 #include <errno.h>
-#define BUFFERSIZE 1024
+#define BUFFERSIZE 512
 extern char **environ;
 int loop(char *name);
 char *readline(int status);

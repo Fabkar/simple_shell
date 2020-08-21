@@ -16,9 +16,10 @@ int execute(char **args, int counter, char *name)
 	if (command == NULL)
 	{
 		errorsys(args[0], counter, "not found", name);
-		free(command);
+		free(args[0]);
+		free(args);
 		return (1);
-	}
+	}    /* no memory leaks with no commands */
 	pid = fork();
 	if (pid < 0)
 	{
@@ -30,12 +31,13 @@ int execute(char **args, int counter, char *name)
 		if (execve(command, args, environ) == -1)
 		{
 			errorsys(command, counter, "cannot execute", name);
+			free(command);
+			free(args[0]);
+			free(args);
 			exit(errno);
 		}
 		else
-		{
 			exit(errno);
-		}
 	}
 	else
 	{
@@ -43,5 +45,8 @@ int execute(char **args, int counter, char *name)
 		if (WIFEXITED(status))
 			errorstatus = WEXITSTATUS(status);
 	}
+	free(command);
+	free(args[0]);
+	free(args);
 	return (errorstatus);
 }

@@ -20,12 +20,15 @@ int loop(char *name)
 		line = checkspaces(line);
 		if (line == NULL)
 			continue;
-		simplexit(line, outstatus); /* libres de leaks hasta aca */
+		simplexit(line, outstatus);
 		args = splitline(line);
 		if (checkenv(args[0]))
+		{
+			free(args);
 			continue;
+		}
 		checkexit(args[0], args[1], args, outstatus);
-		outstatus = execute(args, counter, name);
+		outstatus = execute(args, counter, name); /* no memory leaks with no commands*/
 		counter++;
 	}
 	return (outstatus);
