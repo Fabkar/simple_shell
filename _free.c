@@ -1,14 +1,14 @@
 #include "shell.h"
 /**
  * _free - function to free args.
- * @args: double pointer
+ * @command: command to be free
+ * @arg: arg[0] to be free
+ * @args: double pointer to be free
  * Return: void return
  */
-void _free(char **args)
+void _free(char *command, char *arg, char **args)
 {
-	int a;
-
-	for (a = 0; args[a] != NULL; a++)
-		free(args[a]);
+	free(command);
+	free(arg);
 	free(args);
 }

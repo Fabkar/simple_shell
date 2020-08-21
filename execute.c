@@ -16,32 +16,36 @@ int execute(char **args, int counter, char *name)
 	if (command == NULL)
 	{
 		errorsys(args[0], counter, "not found", name);
-		free(command);
-		return (1);
+		free(args[0]);
+		free(args);
+		return (127);
 	}
 	pid = fork();
 	if (pid < 0)
-	{
-		perror("Error: ");
 		exit(errno);
-	}
 	else if (pid == 0)
 	{
 		if (execve(command, args, environ) == -1)
 		{
-			errorsys(command, counter, "cannot execute", name);
-			exit(errno);
+		errorsys(command, counter, "cannot execute", name);
+		_free(command, args[0], args);
+		exit(errno);
 		}
 		else
-		{
-			exit(errno);
-		}
+		exit(errno);
 	}
 	else
 	{
 		wait(&status);
 		if (WIFEXITED(status))
-			errorstatus = WEXITSTATUS(status);
+		errorstatus = WEXITSTATUS(status);
 	}
+	if (!_strcmp(command, args[0]))
+	{
+		free(args[0]);
+		free(args);
+		return (errorstatus);
+	}
+	_free(command, args[0], args);
 	return (errorstatus);
 }

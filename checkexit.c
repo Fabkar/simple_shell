@@ -15,11 +15,11 @@ int checkexit(char *arg, char *n, char **args, int status)
 	{
 		if (!_strncmp("exit", arg, 4))
 		{
-			if (n)
-				status = _atoi(n);
-			free(arg);
-			free(args);
-			exit(status);
+		if (n)
+			status = _atoi(n);
+		free(arg);
+		free(args);
+		exit(status);
 		}
 	}
 	return (0);
@@ -32,11 +32,16 @@ int checkexit(char *arg, char *n, char **args, int status)
 char *checkspaces(char *line)
 {
 	int i = 0;
-	(void)line;
+	char *new;
+
 	while (line[i] != '\0')
 	{
 		if (line[i] != ' ')
-			return (line + i);
+		{
+		new = _strdup(line + i);
+		free(line);
+		return (new);
+		}
 		i++;
 	}
 	free(line);
@@ -57,19 +62,20 @@ int simplexit(char *arg, int status)
 	len = _strlen(arg);
 	if (len == 4)
 		if (arg)
-			if (!_strncmp("exit", arg, 4))
-			{
-				free(arg);
-				exit(status);
-			}
+		if (!_strncmp("exit", arg, 4))
+		{
+			free(arg);
+			exit(status);
+		}
 	return (0);
 }
 /**
  * checkenv - function check env built
  * @arg: Pointer to string.
+ * @args: double pointer to be free
  * Return: 1 if the match is success else 0.
  */
-int checkenv(char *arg)
+int checkenv(char *arg, char **args)
 {
 	int len;
 
@@ -77,8 +83,10 @@ int checkenv(char *arg)
 	if (len == 3)
 		if ((_strncmp("env", arg, 3)) == 0)
 		{
-			_printenv();
-			return (1);
+		_printenv();
+		free(arg);
+		free(args);
+		return (1);
 		}
 	return (0);
 }
@@ -92,12 +100,12 @@ int checkenv(char *arg)
  */
 void errorsys(char *argv, int count, char *error, char *name)
 {
-	_puts(name);
-	_puts(": ");
+	write(STDERR_FILENO, name, _strlen(name));
+	write(STDERR_FILENO, ": ", 3);
 	print_number(count);
-	_puts(": ");
-	_puts(argv);
-	_puts(": ");
-	_puts(error);
-	_putchar(10);
+	write(STDERR_FILENO, ": ", 3);
+	write(STDERR_FILENO, argv, _strlen(argv));
+	write(STDERR_FILENO, ": ", 3);
+	write(STDERR_FILENO, error, _strlen(error));
+	write(STDERR_FILENO, "\n", 1);
 }

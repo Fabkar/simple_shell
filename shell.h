@@ -9,7 +9,7 @@
 #include <signal.h>
 #include <sys/stat.h>
 #include <errno.h>
-#define BUFFERSIZE 1024
+#define BUFFERSIZE 512
 extern char **environ;
 int loop(char *name);
 char *readline(int status);
@@ -32,10 +32,10 @@ void print_number(int n);
 void errorsys(char *argv, int count, char *error, char *name);
 int checkexit(char *arg, char *n, char **args, int status);
 int simplexit(char *arg, int status);
-int checkenv(char *arg);
+int checkenv(char *arg, char **args);
 char *checkspaces(char *line);
 void ctrlc(int sign);
 int _atoi(char *s);
 ssize_t _getline(char **buffline, size_t *size, FILE *std);
-void _free(char **args);
+void _free(char *command, char *arg, char **args);
 #endif
