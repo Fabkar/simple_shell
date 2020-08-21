@@ -19,79 +19,98 @@ A shell program is an application that allows interacting with the computer. In 
  - Gcc >= 4.8.4
  - Linux
 
-#### Steps
- - `git clone`
- - `cd shell`
+#### Steps to compile the shell and execute.
+ - `git clone https://github.com/gedafu/simple_shell.git`
+ - `cd simple_shell`
  - `gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
+ - `./hsh`
  - Enjoy it
 
 
 ### Sys Functions
 Prototypes | Description
 ----------- | -------------
-**superminishell** | Init the shell.
 **loop** | Start the main loop our shell.
 **readline** | Read the line command.
+**checkspaces** | Funtion avoid spaces at the beginning of the command line.
+**splitline** | Split line command and convert to *tokens* each argument.
+**splitpath** | Split the path in a new string.
+**execute** | Function to execute all arguments in command line.
+**_getenv** | search the enviroment list to find enviroment variable.
+**checkenv** | Funtion check if the command is env to print it.
+**_putchar** | Function to print a character.
+**_puts** | Function to print a string.
+**prompt** | Funtion to print our prompt line.
+**_printenv** | Funtion to print the environment.
+**print_number** | Funtion to print a number in STDERR.
+**errorsys** | Funtion to print in STDERR when a command is not found or the program does not exist.
+**matchcommand** | Function to get the command.
+**atoi** | Change a character to a integer.
+**_free** | Funtion to free arguments.
+**checkexit** | when the user type "exit" make a match and break the fucntion loop to exit from the shell.
+**simplexit** | Funtion to check the exit with estatus.
+**ctrlc** | the user type "ctrl + c" and break the process in the shell and exit.
 **_strtok** | Function to tokenize each argument in the command line.
 **_strcat** | Function to concatenates two strings.
 **_strcmp** | Function to comparates two strings.
 **_strncmp** | Function to compare two strings with a certain amount of bytes.
 **_strlen** | Function to know the length of the string.
-**splitline** | Split line command and convert to *tokens* each argument.
-**splitpath** | Split the path in a new string.
-**execute** | Function to execute all arguments in command line.
-**_getline** | function to get the line has been typing from user in prompt.
-**_getenv** | search the enviroment list to find enviroment variable.
-**_putchar** | Function to print a character.
-**_puts** | Function to print a string.
-**prompt** | Funtion to print our prompt line.
-**matchcommand** | Function to get the path enviroment.
-**atoi** | Change a character to a integer.
-**checkexit** | when the user type "exit" make a match and break the fucntion loop to exit from the shell.
-**ctrlc** | the user type "ctrl + c" and break the process in the shell and exit.
+**_strdup** | the user type "ctrl + c" and break the process in the shell and exit.
 
 
 ### Flowchart
 
+<p align="center">
+   <img src="https://github.com/gedafu/simple_shell/blob/master/flowchart%20shell.png">
+</p>
 
 ### Files
-This list is our files used to integrate the all function _printf
+This list is our files used to compile the shell 4.0
 
 * [shell.h](https://github.com/gedafu/simple_shell/blob/master/shell.h)
 Header of functions where are store the prototypes and libraries.
 
-* [loop](https://github.com/gedafu/simple_shell/blob/master/loop.c)
+* [main.c](https://github.com/gedafu/simple_shell/blob/master/main.c)
+Entry point to the shell.
+
+* [_free.c](https://github.com/gedafu/simple_shell/blob/master/_free.c)
+Functions to free arguments.
+
+* [loop.c](https://github.com/gedafu/simple_shell/blob/master/loop.c)
 Initializace the main loop of shell.
 
-* [matchcommand](https://github.com/gedafu/simple_shell/blob/master/matchcommand.c)
-Function to get the path enviroment.
+* [matchcommand.c](https://github.com/gedafu/simple_shell/blob/master/matchcommand.c)
+Function to find a command with or without path.
 
-* [atoi](https://github.com/gedafu/simple_shell/blob/master/atoi.c)
+* [atoi.c](https://github.com/gedafu/simple_shell/blob/master/atoi.c)
 Change a character to a integer.
 
-* [string_functions](https://github.com/gedafu/simple_shell/blob/master/string_functions.c)
+* [string_functions.c](https://github.com/gedafu/simple_shell/blob/master/string_functions.c)
 Suites Functions to handle strings; _strcat, _strtok, _strncmp, _strcmp, _strlen.
 
-* [readline](https://github.com/gedafu/simple_shell/blob/master/readline.c)
+* [readline.c](https://github.com/gedafu/simple_shell/blob/master/readline.c)
 Function that read the command line.
 
-* [split_functions](https://github.com/gedafu/simple_shell/blob/master/split_functions.c)
+* [split_functions.c](https://github.com/gedafu/simple_shell/blob/master/split_functions.c)
 Functions to split the command line and path enviroment; splitline and splitpath.
 
-* [get_functions](https://github.com/gedafu/simple_shell/blob/master/get_functions.c)
+* [get_functions.c](https://github.com/gedafu/simple_shell/blob/master/get_functions.c)
 Functions to get the lines and search enviroment list; _getline, _getenv.
 
-* [print_functions](https://github.com/gedafu/simple_shell/blob/master/print_functions.c)
+* [print_functions.c](https://github.com/gedafu/simple_shell/blob/master/print_functions.c)
 Suites functions to handle printing; _puts, _putchar, prompt.
 
-* [execute](https://github.com/gedafu/simple_shell/blob/master/execute.c)
+* [execute.c](https://github.com/gedafu/simple_shell/blob/master/execute.c)
 Function execute each argument and return a integer to standard out.
 
-* [checkexit](https://github.com/gedafu/simple_shell/blob/master/checkexit.c)
+* [checkexit.c](https://github.com/gedafu/simple_shell/blob/master/checkexit.c)
 Function to check a string "exit".
 
-* [ctrlc](https://github.com/gedafu/simple_shell/blob/master/ctrlc.c)
+* [ctrlc.c](https://github.com/gedafu/simple_shell/blob/master/ctrlc.c)
 Function to exit when user type "Ctrl + c".
+
+* [strdup.c](https://github.com/gedafu/simple_shell/blob/master/strdup.c)
+Function to duplicate a string.
 
 #### REQUIREMENTS
 
