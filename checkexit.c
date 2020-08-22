@@ -101,11 +101,11 @@ int checkenv(char *arg, char **args)
 void errorsys(char *argv, int count, char *error, char *name)
 {
 	write(STDERR_FILENO, name, _strlen(name));
-	write(STDERR_FILENO, ": ", 3);
+	write(STDERR_FILENO, ": ", 2);
 	print_number(count);
-	write(STDERR_FILENO, ": ", 3);
+	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, argv, _strlen(argv));
-	write(STDERR_FILENO, ": ", 3);
+	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, error, _strlen(error));
 	write(STDERR_FILENO, "\n", 1);
 }
