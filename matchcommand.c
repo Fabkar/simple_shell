@@ -17,9 +17,9 @@ char *matchcommand(char *command)
 			return (command);
 	folder = _getenv("PATH");
 	folders = splitpath(folder);
-	if (folders)
+	if (folders != NULL)
 	{
-		while (folders[i])
+		while (folders[i] != NULL)
 		{
 			finalcommand = _strcat(folders[i], command);
 				if (stat(finalcommand, &fileStat) == 0)
