@@ -12,6 +12,8 @@ char *matchcommand(char *command)
 	char *finalcommand = NULL;
 	int i = 0;
 
+	if (environ == NULL)
+		return (NULL);
 	if (*command == '.' || *command == '/')
 		if (stat(command, &fileStat) == 0)
 			return (command);
