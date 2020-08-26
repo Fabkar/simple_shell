@@ -11,7 +11,7 @@ char *_getenv(char *path)
 
 	while (environ[i])
 	{
-		if (!_strcmp(environ[i], path) && environ[i][4] == '=')
+		if (!_strcmp(environ[i], path) && environ[i][4])
 		{
 			folder = (*(environ + i));
 			folder = folder + _strlen(path) + 1;
