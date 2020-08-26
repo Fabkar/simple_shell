@@ -16,6 +16,8 @@ char *matchcommand(char *command)
 		if (stat(command, &fileStat) == 0)
 			return (command);
 	folder = _getenv("PATH");
+	if (folders == NULL)
+		return (NULL);
 	folders = splitpath(folder);
 	if (folders != NULL)
 	{
