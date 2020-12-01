@@ -161,13 +161,13 @@ AUTHORS  ctrlc.c      get_functions.c  loop.c  matchcommand.c      readline.c   
 <p align="center">
     <h2 align="center">Made by, David Arias Fuentes</h2>
       <p align="center">
-        <a href="https://twitter.com/DavidAriasFu" target="_blank">
+        <a href="https://twitter.com/DavidDevArias" target="_blank">
             <img alt="twitter_page" src="https://github.com/gedafu/readme-template/blob/master/images/twitter.png" style="float: center; margin-right: 10px" height="50" width="50">
         </a>
-        <a href="https://www.linkedin.com/in/david-arias-fuentes-5b50951b0/" target="_blank">
+        <a href="https://www.linkedin.com/in/devarias/" target="_blank">
             <img alt="linkedin_page" src="https://github.com/gedafu/readme-template/blob/master/images/linkedin.png" style="float: center; margin-right: 10px" height="50"  width="50">
         </a>
-        <a href="https://medium.com/@gedafu2005" target="_blank">
+        <a href="https://daviddevarias.medium.com/" target="_blank">
             <img alt="medium_page" src="https://github.com/gedafu/readme-template/blob/master/images/medium.png" style="float: center; margin-right: 10px" height="50" width="50">
         </a>
       </p>
